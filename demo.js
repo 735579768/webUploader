@@ -1,4 +1,5 @@
 ! function(a, b) {
+    a.BASE_URL = webUploaderUrl.BASE_URL;
     a.webUploader = {
         /**
          * //初始化上传插件
@@ -112,7 +113,8 @@
                 chunkSize: 5242880, // [可选] [默认值：5242880] 如果要分片，分多大一片？ 默认大小为5M.
                 chunkRetry: 2, //[可选] [默认值：2] 如果某个分片由于网络问题出错，允许自动重传多少次？
                 // server: 'http://webuploader.duapp.com/server/fileupload.php',
-                server: './fileupload.php',
+                // server: './fileupload.php',
+                server: webUploaderUrl.UPLOADER_URL,
                 fileNumLimit: filenum,
                 fileSizeLimit: 5 * 1024 * 1024, // 200 M
                 fileSingleSizeLimit: 1 * 1024 * 1024, // 50 M
@@ -530,7 +532,7 @@
         initImgList: function(valId, imglistId, uploaderType) {
             var sid = $(valId).val();
             if (sid) {
-                $.post(GET_FILEINFO_URL, {
+                $.post(webUploaderUrl.FILEINFO_URL, {
                     id: sid,
                     type: 'img'
                 }, function(data) {

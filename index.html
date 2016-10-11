@@ -11,7 +11,7 @@
     <meta name="description" content="描述" />
     <script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="./webuploader.min.js"></script>
-    <script type="text/javascript" src="./demo.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./css/webuploader.css" />
 </head>
 
@@ -22,9 +22,14 @@
 </style>
 <script type="text/javascript">
 // 添加编辑器放的位置路径
-var BASE_URL = '/webuploader';
-var GET_FILEINFO_URL='./fileupload.php?action=img';
+var webUploaderUrl={
+ BASE_URL : '/webuploader',
+ FILEINFO_URL:'./fileupload.php?action=img',
+ UPLOADER_URL:'./fileupload.php'
+}
+
 </script>
+<script type="text/javascript" src="./demo.js"></script>
 <div class="webuploader-wh">
     <div id="uploader"></div>
     <div id="imglist_uploader" class="upcl"></div>
