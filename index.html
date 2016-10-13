@@ -10,6 +10,7 @@
     <meta name="keywords" content="关键字" />
     <meta name="description" content="描述" />
     <script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="./layer/layer.js"></script>
     <script type="text/javascript" src="./webuploader.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./css/webuploader.css" />
@@ -23,17 +24,24 @@
 <script type="text/javascript">
 // 添加编辑器放的位置路径
 var webUploaderUrl={
- BASE_URL : '/webuploader',
+ BASE_URL : '',
  FILEINFO_URL:'./fileupload.php?action=img',
  UPLOADER_URL:'./fileupload.php'
 }
 
 </script>
+<!--[if IE]>
+<style>
+.ie-show-ts{display:block;}
+.uploader-wrap .note-sm,
+.uploader-img p{display:none;}
+</style>
+<![endif]-->
 <script type="text/javascript" src="./webuploader-init.js"></script>
 <div class="webuploader-wh">
-    <div id="uploader"></div>
-    <div id="imglist_uploader" class="upcl"></div>
-    <input type="hidden" id="uploadpic_uploader" name="uploader" value="0" />
+    <div id="uploader1"></div>
+    <div id="imglist_uploader1" class="upcl"></div>
+    <input type="hidden" id="uploadpic_uploader1" name="uploader" value="0" />
     <script type="text/javascript">
     jQuery(function() {
         var uploader1=setInterval(function(){
@@ -41,9 +49,9 @@ var webUploaderUrl={
         clearInterval(uploader1);
             !function(){
                 //初始化上传控件
-                var conId='#uploader';//上传容器id
-                var imglistId='#imglist_uploader';//上传成功预览图片列表id
-                var valId='#uploadpic_uploader';//当前图片值表单id
+                var conId='#uploader1';//上传容器id
+                var imglistId='#imglist_uploader1';//上传成功预览图片列表id
+                var valId='#uploadpic_uploader1';//当前图片值表单id
                 var ismuli=false;//是否多图上传
                 var uploader=new webUploader.create();
                 uploader.init(conId,ismuli, function(data,upObj) {
