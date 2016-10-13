@@ -10,7 +10,7 @@
     <meta name="keywords" content="关键字" />
     <meta name="description" content="描述" />
     <script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="./webuploader.min.js"></script>
+    <script type="text/javascript" src="./webuploader.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./css/webuploader.css" />
 </head>
@@ -29,32 +29,34 @@ var webUploaderUrl={
 }
 
 </script>
-<script type="text/javascript" src="./demo.js"></script>
+<script type="text/javascript" src="./webuploader-init.js"></script>
 <div class="webuploader-wh">
     <div id="uploader"></div>
     <div id="imglist_uploader" class="upcl"></div>
     <input type="hidden" id="uploadpic_uploader" name="uploader" value="0" />
     <script type="text/javascript">
     jQuery(function() {
-        !function(){
-            //初始化上传控件
-            var conId='#uploader';//上传容器id
-            var imglistId='#imglist_uploader';//上传成功预览图片列表id
-            var valId='#uploadpic_uploader';//当前图片值表单id
-            var ismuli=false;//是否多图上传
-            webUploader.init(conId,ismuli, function(data,upObj) {
-                console.log(data);
-                console.log(upObj);
-                $(valId).val(data.id);
-                webUploader.addimg(imglistId,data,ismuli);
-            });
-            //初始化图片列表
-            webUploader.initImgList(valId,imglistId,ismuli);
-            // layer.photos({
-            //   photos: imglistId
-            // });
-            // file&&file.bindDel();
-        }();
+        var uploader1=setInterval(function(){
+        if(webUploader.jiance()){
+        clearInterval(uploader1);
+            !function(){
+                //初始化上传控件
+                var conId='#uploader';//上传容器id
+                var imglistId='#imglist_uploader';//上传成功预览图片列表id
+                var valId='#uploadpic_uploader';//当前图片值表单id
+                var ismuli=false;//是否多图上传
+                var uploader=new webUploader.create();
+                uploader.init(conId,ismuli, function(data,upObj) {
+                    console.log(data);
+                    console.log(upObj);
+                    $(valId).val(data.id);
+                    uploader.addimg(imglistId,data,ismuli);
+                });
+                console.log(uploader);
+                uploader.initImgList(valId,imglistId,ismuli);
+            }();
+         }
+        },100);
     });
     </script>
 </div>
@@ -66,25 +68,32 @@ var webUploaderUrl={
     <input type="hidden" id="uploadpic_uploader2" name="uploader2" value="0" />
     <script type="text/javascript">
     jQuery(function() {
+         var uploader2=setInterval(function(){
+         if(webUploader.jiance()){
+                clearInterval(uploader2);
         !function(){
             //初始化上传控件
             var conId='#uploader2';//上传容器id
             var imglistId='#imglist_uploader2';//上传成功预览图片列表id
             var valId='#uploadpic_uploader2';//当前图片值表单id
             var ismuli=true;//是否多图上传
-            webUploader.init(conId,ismuli, function(data,upObj) {
+            var uploader=new webUploader.create();
+            uploader.init(conId,ismuli, function(data,upObj) {
                 console.log(data);
                 console.log(upObj);
                 $(valId).val(data.id);
-                webUploader.addimg(imglistId,data,ismuli);
+                uploader.addimg(imglistId,data,ismuli);
             });
+            console.log(uploader);
             //初始化图片列表
-            webUploader.initImgList(valId,imglistId,ismuli);
+            uploader.initImgList(valId,imglistId,ismuli);
             // layer.photos({
             //   photos: imglistId
             // });
             // file&&file.bindDel();
         }();
+    }
+    },100);
     });
     </script>
 </div>
